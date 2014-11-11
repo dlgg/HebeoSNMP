@@ -1,0 +1,42 @@
+HEBEO-MIB DEFINITIONS ::= BEGIN
+IMPORTS
+OBJECT-TYPE, NOTIFICATION-TYPE, MODULE-IDENTITY,
+Integer32, Opaque, enterprises, Counter32
+FROM SNMPv2-SMI
+TEXTUAL-CONVENTION, DisplayString, TruthValue
+FROM SNMPv2-TC;
+
+hebeo MODULE-IDENTITY
+LAST-UPDATED "201411111908Z"
+ORGANIZATION "Hebeo http://www.hebeo.org/"
+CONTACT-INFO
+"email: damien@hebeo.org"
+DESCRIPTION
+"HEBEO MIB"
+::= { enterprises 44687 }
+
+Admin OBJECT IDENTIFIER ::= { withings 1 }
+
+Memcache OBJECT IDENTIFIER ::= { Admin 1 }
+Netstat OBJECT IDENTIFIER ::= { Admin 2 }
+InodeCount OBJECT IDENTIFIER ::= { Admin 3 }
+InodeByPart OBJECT IDENTIFIER ::= { Admin 4 }
+Threads OBJECT IDENTIFIER ::= { Admin 5 }
+Entropy OBJECT IDENTIFIER ::= { Admin 6 }
+Interrupts OBJECT IDENTIFIER ::= { Admin 7 }
+Irqstats OBJECT IDENTIFIER ::= { Admin 8 }
+IOStats OBJECT IDENTIFIER ::= { Admin 9 }
+ForkRate OBJECT IDENTIFIER ::= { Admin 10 }
+ProcessPriority OBJECT IDENTIFIER ::= { Admin 11 }
+Filetable OBJECT IDENTIFIER ::= { Admin 12 }
+Apache2Stats OBJECT IDENTIFIER ::= { Admin 13 }
+Apache2Requests OBJECT IDENTIFIER ::= { Admin 14 }
+
+Apache2RequestsWaiting OBJECT IDENTIFIER ::= { Apache2Requests 1 }
+Apache2RequestsStarting OBJECT IDENTIFIER ::= { Apache2Requests 2 }
+Apache2RequestsReading OBJECT IDENTIFIER ::= { Apache2Requests 3 }
+Apache2RequestsReply OBJECT IDENTIFIER ::= { Apache2Requests 4 }
+Apache2RequestsKeepalive OBJECT IDENTIFIER ::= { Apache2Requests 5 }
+Apache2RequestsDnsLookup OBJECT IDENTIFIER ::= { Apache2Requests 6 }
+
+END
