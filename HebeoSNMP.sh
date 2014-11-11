@@ -6,8 +6,8 @@ PEN="44687"
 #DEBUG=1
 
 
-[ ${DEBUG} ] && echo $(date) >>/tmp/snmp.log
-[ ${DEBUG} ] && echo START $0 $1 $2 $3 >>/tmp/snmp.log
+[ ${DEBUG} ] && echo $(date) | tee -a /tmp/snmp.log
+[ ${DEBUG} ] && echo START $0 $1 $2 $3 | tee -a /tmp/snmp.log
 
 ###
 ### the first line should be the OID of the returned value, the second should be its
@@ -24,7 +24,7 @@ PEN="44687"
 ###################
 
 check_memcache() {
-  [ ${DEBUG} ] && echo check_memcache $1 $2 $3 >>/tmp/snmp.log
+  [ ${DEBUG} ] && echo check_memcache $1 $2 $3 | tee -a /tmp/snmp.log
   pgrep memcache >/dev/null 2>&1; [ $? -ne 0 ] && exit 1
   echo $1
   echo STRING
@@ -32,7 +32,7 @@ check_memcache() {
 }
 
 check_netstat() {
-  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ ${DEBUG} ] && echo check_netstat $1 | tee -a /tmp/snmp.log
   [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
   echo $1
   echo STRING
@@ -343,7 +343,7 @@ check_apache_requests_logging() {
 ###############
 
 snmpget() {
-  [ ${DEBUG} ] && echo sget $0 $1 $2 $3 >>/tmp/snmp.log
+  [ ${DEBUG} ] && echo sget $0 $1 $2 $3 |tee -a /tmp/snmp.log
   case $1 in 
     .1.3.6.1.4.1.44687.1.1         ) check_memcache $1 ;;
     .1.3.6.1.4.1.44687.1.2         ) check_netstat $1 ;;
