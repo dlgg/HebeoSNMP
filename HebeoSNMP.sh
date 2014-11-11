@@ -40,6 +40,103 @@ check_netstat() {
   echo "ESTABLISHED=${ESTABLISHED:-0} SYN_SENT=${SYN_SENT:-0} SYN_RECV=${SYN_RECV:-0} FIN_WAIT1=${FIN_WAIT1:-0} FIN_WAIT2=${FIN_WAIT2:-0} TIME_WAIT=${TIME_WAIT:-0} CLOSE=${CLOSE:-0} CLOSE_WAIT=${CLOSE_WAIT:-0} LAST_ACK=${LAST_ACK:-0} LISTEN=${LISTEN:-0} CLOSING=${CLOSING:-0} UNKNOWN=${UNKNOWN:-0}"
 }
 
+check_netstat_established() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${ESTABLISHED:-0}"
+}
+check_netstat_syn_sent() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${SYN_SENT:-0}"
+}
+check_netstat_syn_recv() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${SYN_RECV:-0}"
+}
+check_netstat_fin_wait1() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${FIN_WAIT1:-0}"
+}
+check_netstat_fin_wait2() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${FIN_WAIT2:-0}"
+}
+check_netstat_time_wait() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${TIME_WAIT:-0}"
+}
+check_netstat_close() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${CLOSE:-0}"
+}
+check_netstat_close_wait() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${CLOSE_WAIT:-0}"
+}
+check_netstat_last_ack() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${LAST_ACK:-0}"
+}
+check_netstat_listen() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${LISTEN:-0}"
+}
+check_netstat_closing() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${CLOSING:-0}"
+}
+check_netstat_unknown() {
+  [ ${DEBUG} ] && echo check_netstat $1 >>/tmp/snmp.log
+  [ $(echo $(uname -r)|grep -c grsec) -eq 0 ] && CMDRET=$(netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}') || CMDRET=$(sudo netstat -utan |tail -n +3|awk '{print $6}'|sort|uniq -c|awk '{printf("%s=%s ",$2,$1)}')
+  echo $1
+  echo INTEGER
+  eval UDP_LISTEN${CMDRET}
+  echo "${UNKNOWN:-0}"
+}
+
 check_inode_nr() {
   echo $1
   echo STRING
@@ -250,6 +347,18 @@ snmpget() {
   case $1 in 
     .1.3.6.1.4.1.44687.1.1         ) check_memcache $1 ;;
     .1.3.6.1.4.1.44687.1.2         ) check_netstat $1 ;;
+    .1.3.6.1.4.1.44687.1.2.1       ) check_netstat_established $1 ;;
+    .1.3.6.1.4.1.44687.1.2.2       ) check_netstat_syn_sent $1 ;;
+    .1.3.6.1.4.1.44687.1.2.3       ) check_netstat_syn_recv $1 ;;
+    .1.3.6.1.4.1.44687.1.2.4       ) check_netstat_fin_wait1 $1 ;;
+    .1.3.6.1.4.1.44687.1.2.5       ) check_netstat_fin_wait2 $1 ;;
+    .1.3.6.1.4.1.44687.1.2.6       ) check_netstat_time_wait $1 ;;
+    .1.3.6.1.4.1.44687.1.2.7       ) check_netstat_close $1 ;;
+    .1.3.6.1.4.1.44687.1.2.8       ) check_netstat_close_wait $1 ;;
+    .1.3.6.1.4.1.44687.1.2.9       ) check_netstat_last_ack $1 ;;
+    .1.3.6.1.4.1.44687.1.2.10      ) check_netstat_listen $1 ;;
+    .1.3.6.1.4.1.44687.1.2.11      ) check_netstat_closing $1 ;;
+    .1.3.6.1.4.1.44687.1.2.12      ) check_netstat_unknown $1 ;;
     .1.3.6.1.4.1.44687.1.3         ) check_inode_nr $1 ;;
     .1.3.6.1.4.1.44687.1.4         ) check_inode_df $1 ;;
     .1.3.6.1.4.1.44687.1.5         ) check_threads $1 ;;

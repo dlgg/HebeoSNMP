@@ -32,6 +32,19 @@ Filetable OBJECT IDENTIFIER ::= { Admin 12 }
 Apache2Stats OBJECT IDENTIFIER ::= { Admin 13 }
 Apache2Requests OBJECT IDENTIFIER ::= { Admin 14 }
 
+NetstatEstablished ::= { Netstat 1 }
+NetstatSynSent ::= { Netstat 2 }
+NetstatSynRecv ::= { Netstat 3 }
+NetstatFinWait1 ::= { Netstat 4 }
+NetstatFinWait2 ::= { Netstat 5 }
+NetstatTimeWait ::= { Netstat 6 }
+NetstatClose ::= { Netstat 7 }
+NetstatCloseWait ::= { Netstat 8 }
+NetstatLastAck ::= { Netstat 9 }
+NetstatListen ::= { Netstat 10 }
+NetstatClosing ::= { Netstat 11 }
+NetstatUnknown ::= { Netstat 12 }
+
 Apache2RequestsWaiting OBJECT IDENTIFIER ::= { Apache2Requests 1 }
 Apache2RequestsStarting OBJECT IDENTIFIER ::= { Apache2Requests 2 }
 Apache2RequestsReading OBJECT IDENTIFIER ::= { Apache2Requests 3 }
