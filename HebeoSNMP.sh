@@ -379,6 +379,26 @@ snmpget() {
     .1.3.6.1.4.1.44687.1.14.6      ) check_apache_requests_dnslookup $1 ;;
     .1.3.6.1.4.1.44687.1.14.7      ) check_apache_requests_closing $1 ;;
     .1.3.6.1.4.1.44687.1.14.8      ) check_apache_requests_logging $1 ;;
+    .1.3.6.1.4.1.44687.2           ) check_freebox $1 ;;
+    .1.3.6.1.4.1.44687.2.1         ) check_freebox_api_version $1 ;;
+    .1.3.6.1.4.1.44687.2.2         ) check_freebox_lan_hosts $1 ;;
+    .1.3.6.1.4.1.44687.2.2.1       ) check_freebox_lan_hosts_total $1 ;;
+    .1.3.6.1.4.1.44687.2.2.2       ) check_freebox_lan_hosts_online $1 ;;
+    .1.3.6.1.4.1.44687.2.3         ) check_freebox_freeplugs $1 ;;
+    .1.3.6.1.4.1.44687.2.4         ) check_freebox_upnp $1 ;;
+    .1.3.6.1.4.1.44687.2.20        ) check_freebox_system $1 ;;
+    .1.3.6.1.4.1.44687.2.20.1      ) check_freebox_system_mac $1 ;;
+    .1.3.6.1.4.1.44687.2.20.2      ) check_freebox_system_board_name $1 ;;
+    .1.3.6.1.4.1.44687.2.20.3      ) check_freebox_system_fan_rpm $1 ;;
+    .1.3.6.1.4.1.44687.2.20.4      ) check_freebox_system_temp_sw $1 ;;
+    .1.3.6.1.4.1.44687.2.20.5      ) check_freebox_system_uptime $1 ;;
+    .1.3.6.1.4.1.44687.2.20.6      ) check_freebox_system_uptime_value $1 ;;
+    .1.3.6.1.4.1.44687.2.20.7      ) check_freebox_system_temp_cpub $1 ;;
+    .1.3.6.1.4.1.44687.2.20.8      ) check_freebox_system_temp_cpum $1 ;;
+    .1.3.6.1.4.1.44687.2.20.9      ) check_freebox_system_serial $1 ;;
+    .1.3.6.1.4.1.44687.2.20.10     ) check_freebox_system_firmware_version $1 ;;
+    .1.3.6.1.4.1.44687.2.21        ) check_freebox_connection $1 ;;
+    .1.3.6.1.4.1.44687.2.22        ) check_freebox_lan $1 ;;
   esac
 }
 
