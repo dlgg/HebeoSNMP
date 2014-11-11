@@ -16,6 +16,7 @@ DESCRIPTION
 ::= { enterprises 44687 }
 
 Admin OBJECT IDENTIFIER ::= { Hebeo 1 }
+Freebox OBJECT IDENTIFIER ::= { Hebeo 2 }
 
 Memcache OBJECT IDENTIFIER ::= { Admin 1 }
 Netstat OBJECT IDENTIFIER ::= { Admin 2 }
@@ -31,6 +32,14 @@ ProcessPriority OBJECT IDENTIFIER ::= { Admin 11 }
 Filetable OBJECT IDENTIFIER ::= { Admin 12 }
 Apache2Stats OBJECT IDENTIFIER ::= { Admin 13 }
 Apache2Requests OBJECT IDENTIFIER ::= { Admin 14 }
+
+FbxAPIVersion OBJECT IDENTIFIER ::= { Freebox 1 }
+FbxLanHosts OBJECT IDENTIFIER ::= { Freebox 2 }
+FbxFreeplugs OBJECT IDENTIFIER ::= { Freebox 3 }
+FbxUPNP OBJECT IDENTIFIER ::= { Freebox 4 }
+FbxSystem OBJECT IDENTIFIER ::= { Freebox 20 }
+FbxConnection OBJECT IDENTIFIER ::= { Freebox 21 }
+FbxLan OBJECT IDENTIFIER ::= { Freebox 22 }
 
 NetstatEstablished ::= { Netstat 1 }
 NetstatSynSent ::= { Netstat 2 }
@@ -51,5 +60,19 @@ Apache2RequestsReading OBJECT IDENTIFIER ::= { Apache2Requests 3 }
 Apache2RequestsReply OBJECT IDENTIFIER ::= { Apache2Requests 4 }
 Apache2RequestsKeepalive OBJECT IDENTIFIER ::= { Apache2Requests 5 }
 Apache2RequestsDnsLookup OBJECT IDENTIFIER ::= { Apache2Requests 6 }
+
+FbxLanHostsTotal OBJECT IDENTIFIER ::= { FbxLanHosts 1 }
+FbxLanHostsOnline OBJECT IDENTIFIER ::= { FbxLanHosts 2 }
+
+FbxSystemMac OBJECT IDENTIFIER ::= { FbxSystem 1 }
+FbxSystemBoardName OBJECT IDENTIFIER ::= { FbxSystem 2 }
+FbxSystemFanRpm OBJECT IDENTIFIER ::= { FbxSystem 3 }
+FbxSystemTempSW OBJECT IDENTIFIER ::= { FbxSystem 4 }
+FbxSystemUptime OBJECT IDENTIFIER ::= { FbxSystem 5 }
+FbxSystemUptimeVal OBJECT IDENTIFIER ::= { FbxSystem 6 }
+FbxSystemTempCpuB OBJECT IDENTIFIER ::= { FbxSystem 7 }
+FbxSystemTempCpuM OBJECT IDENTIFIER ::= { FbxSystem 8 }
+FbxSystemSerial OBJECT IDENTIFIER ::= { FbxSystem 9 }
+FbxSystemFirmwareVersion OBJECT IDENTIFIER ::= { FbxSystem 10 }
 
 END
