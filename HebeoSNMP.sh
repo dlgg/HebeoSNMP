@@ -3,6 +3,7 @@
 #
 
 PEN="44687"
+FBXSTATS="/usr/local/bin/fbx_stats"
 #DEBUG=1
 
 
@@ -333,6 +334,11 @@ check_apache_requests_logging() {
 #                  ##
 ####################
 
+check_freebox_system_uptime_value() {
+  echo $1
+  echo INTEGER
+  ${FBXSTATS} system uptime_raw
+}
 
   ###############
  ################
